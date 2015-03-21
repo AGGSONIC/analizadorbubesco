@@ -73,6 +73,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="texto">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="verificar">
           <Properties>

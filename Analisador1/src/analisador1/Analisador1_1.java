@@ -40,6 +40,12 @@ public class Analisador1_1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        texto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoActionPerformed(evt);
+            }
+        });
+
         verificar.setText("verificar");
         verificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,9 +100,8 @@ public class Analisador1_1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void verificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarActionPerformed
-        // TODO add your handling code here:
-        String expresion = texto.getText();
+    public String checaPatron(String expresion)
+    {
         String patron = ("([while | for | if ]+)|([a-zA-Z]+)|([>|<|=|+|*|-]+)|([0-9]+)|([(|)]+)|([{|}]+)|(:)");
         String reservada="",variable="",operador="",numero="",parentisis="",llave="",fin="";
         
@@ -172,13 +177,20 @@ public class Analisador1_1 extends javax.swing.JFrame {
        imprime += "llave " +llave +"\n";
         if(!fin.equals(""))
         imprime+= "fin " +fin +"\n";
+        return imprime;
+    }
+    private void verificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarActionPerformed
+        // TODO add your handling code here:
+        String expresion = texto.getText();
+        String imprime=new Analisador1_1().checaPatron(expresion);
         
-        resultado.setText(imprime);
-        
-        
-        
-        
+        resultado.setText(imprime);      
     }//GEN-LAST:event_verificarActionPerformed
+
+    private void textoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoActionPerformed
+        String imprimir=new Analisador1_1().checaPatron(texto.getText());
+        resultado.setText(imprimir);
+    }//GEN-LAST:event_textoActionPerformed
 
     /**
      * @param args the command line arguments
